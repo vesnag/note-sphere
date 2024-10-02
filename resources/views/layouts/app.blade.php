@@ -1,4 +1,3 @@
-<!-- resources/views/layouts/app.blade.php -->
 <!DOCTYPE html>
 <html lang="en" class="transition-colors duration-300">
 <head>
@@ -8,7 +7,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 flex flex-col min-h-screen">
-     <!-- Header -->
+    <!-- Header -->
     <header class="bg-gray-800 dark:bg-gray-800 text-white fixed w-full top-0 z-10 shadow">
         <div class="container mx-auto flex justify-between items-center p-4">
             <!-- Logo -->
@@ -25,7 +24,7 @@
                     <a href="{{ route('register') }}" class="bg-royalPurple hover:bg-darkPurple text-white px-4 py-2 rounded transition">Register</a>
                 @else
                     <a href="{{ route('dashboard') }}" class="hover:text-lightPink transition">Dashboard</a>
-                    <a href="{{ route('profile') }}" class="hover:text-lightPink transition">Profile</a>
+                    <a href="{{ route('profile.edit') }}" class="hover:text-lightPink transition">Profile</a>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <button type="submit" class="bg-deepLavender hover:bg-royalPurple text-white px-4 py-2 rounded transition">Logout</button>
@@ -50,14 +49,20 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-grow mt-16">
-        @yield('content')
+    <main class="flex-grow pt-16">
+        <div class="container mx-auto px-4 py-10">
+            @yield('content')
+        </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 dark:bg-gray-800 text-white mt-8">
-        <div class="container mx-auto py-4 text-center">
-            <p class="text-sm">&copy; {{ date('Y') }} NoteSphere. All rights reserved.</p>
+    <footer class="bg-gray-800 dark:bg-gray-800 text-white py-4">
+        <div class="container mx-auto text-center">
+            {{ date('Y') }}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="rgb(239, 161, 203)" viewBox="0 0 24 24" width="24" height="24" class="inline-block align-middle mx-1">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+            NoteSphere
         </div>
     </footer>
 </body>

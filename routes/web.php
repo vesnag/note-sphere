@@ -4,11 +4,12 @@
  * @file
  */
 
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 Route::get('/dashboard', function () {
@@ -20,5 +21,14 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Show the note editor.
+Route::get('/note/{id?}', [NoteController::class, 'show'])->name('note.show');
+
+// Store a new note.
+Route::post('/note', [NoteController::class, 'store'])->name('note.store');
+
+// Update an existing note.
+Route::put('/note/{id}', [NoteController::class, 'update'])->name('note.update');
 
 require __DIR__ . '/auth.php';
