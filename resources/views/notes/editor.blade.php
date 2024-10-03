@@ -25,7 +25,7 @@
         <!-- Note Content Textarea -->
         <div class="mb-6">
             <label for="content" class="block text-lg font-medium text-gray-700 dark:text-gray-300">Content</label>
-            <textarea name="content" id="content" rows="10" class="mt-1 block w-full px-3 py-2 border rounded-lg text-gray-900 dark:text-gray-900" required>{{ $note ? $note->content : old('content') }}</textarea>
+            <textarea name="content" id="note-content" rows="10" class="mt-1 block w-full px-3 py-2 border rounded-lg text-gray-900 dark:text-gray-900" required>{{ $note ? $note->content : old('content') }}</textarea>
         </div>
 
         <!-- Submit Button -->

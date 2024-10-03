@@ -30,3 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
     setTheme(newTheme);
   });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+  window.Echo.channel('note-sphere-broadcasting')
+    .listen('NoteUpdated', (event) => {
+      console.log(event.content);
+      document.getElementById('note-content').value = event.content; // Update the note content
+
+    });
+});

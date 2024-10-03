@@ -6,6 +6,7 @@
 
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,13 +23,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Show the note editor.
 Route::get('/note/{id?}', [NoteController::class, 'show'])->name('note.show');
 
-// Store a new note.
 Route::post('/note', [NoteController::class, 'store'])->name('note.store');
 
-// Update an existing note.
 Route::put('/note/{id}', [NoteController::class, 'update'])->name('note.update');
 
 require __DIR__ . '/auth.php';

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\NoteUpdated;
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 /**
  *
@@ -22,6 +24,7 @@ class NoteController extends Controller {
    * Store a new note.
    */
   public function store(Request $request) {
+    // @todo create validator.
     $request->validate([
       'title' => 'required|string|max:255',
       'content' => 'required|string',
@@ -41,6 +44,7 @@ class NoteController extends Controller {
   public function update(Request $request, $id) {
     $note = Note::findOrFail($id);
 
+    // @todo create validator.
     $request->validate([
       'title' => 'required|string|max:255',
       'content' => 'required|string',
@@ -50,6 +54,10 @@ class NoteController extends Controller {
       'title' => $request->title,
       'content' => $request->content,
     ]);
+
+    Log::info("Note updated: $note->id and broadcasted.");
+    // Broadcast the note update.
+    broadcast(new NoteUpdated($note->id, $note->content))->toOthers();
 
     return redirect()->route('note.show', $note->id);
   }
