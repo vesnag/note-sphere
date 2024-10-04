@@ -2,8 +2,8 @@
 
 namespace App\Events;
 
-use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
+use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
@@ -26,11 +26,9 @@ class NoteUpdated implements ShouldBroadcastNow {
    * Define the channel this event will be broadcasted on.
    */
   public function broadcastOn() {
-    Log::info("Broadcasting NoteUpdated to channel: note-sphere-broadcasting");
+    Log::info("Broadcasting NoteUpdated to channel: note-sphere-broadcasting.{$this->noteId}");
 
-    // @todo change this to a private channel.
-    // return new Channel('note-sphere-broadcasting.' . $this->noteId);
-    return new Channel('note-sphere-broadcasting');
+    return new PresenceChannel('note-sphere-broadcasting.' . $this->noteId);
   }
 
   /**

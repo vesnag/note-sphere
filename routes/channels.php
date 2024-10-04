@@ -10,14 +10,17 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
 
+// Broadcast::channel('note-sphere-broadcasting.{noteId}', function ($user, $noteId) {.
+// @todo Add any authorization logic here.
+// Replace with logic that checks if the user is authorized to view this note.
+//    return TRUE;
+// });
 Broadcast::channel('note-sphere-broadcasting.{noteId}', function ($user, $noteId) {
-    // @todo Add any authorization logic here.
-    // Replace with logic that checks if the user is authorized to view this note.
-    return TRUE;
-});
+    // If ($user->canViewNote($noteId)) {.
+        return ['user_id' => $user->id, 'name' => $user->name];
 
-Broadcast::channel('note-sphere-broadcasting', function () {
+    // }
     // @todo Add any authorization logic here.
     // Replace with logic that checks if the user is authorized to view this note.
-    return TRUE;
+    //return FALSE;
 });
