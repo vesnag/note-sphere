@@ -51,7 +51,7 @@
     <!-- Main Content -->
     <main class="flex-grow pt-16">
         <div class="container mx-auto px-4 py-10">
-            @yield('content')
+            {{ $slot }}
         </div>
     </main>
 
