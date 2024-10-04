@@ -6,5 +6,7 @@
         </h2>
     </x-slot>
 
+    @section('title', $note ? 'Edit Note' : 'Create Note')
+
     <x-note-editor :note="$note" />
 </x-app-layout>
