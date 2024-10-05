@@ -17,7 +17,7 @@ class ProfileController extends Controller {
   /**
    * Update the user's profile picture.
    */
-  public function updatePicture(Request $request) {
+  public function updatePicture(Request $request): RedirectResponse {
     $request->validate([
       'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
@@ -47,13 +47,14 @@ class ProfileController extends Controller {
    * Update the user's profile information.
    */
   public function update(ProfileUpdateRequest $request): RedirectResponse {
-    $request->user()->fill($request->validated());
+    $user = $request->user();
+    $user->fill($request->validated());
 
-    if ($request->user()->isDirty('email')) {
-      $request->user()->email_verified_at = NULL;
+    if ($user->isDirty('email')) {
+      $user->email_verified_at = NULL;
     }
 
-    $request->user()->save();
+    $user->save();
 
     return Redirect::route('profile.edit')->with('status', 'profile-updated');
   }

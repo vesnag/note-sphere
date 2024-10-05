@@ -4,9 +4,6 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-/**
- *
- */
 class Dashboard extends Component {
   public $recentNotes;
   public $title;
@@ -16,9 +13,6 @@ class Dashboard extends Component {
     $this->title = $title;
   }
 
-  /**
-   *
-   */
   public function render() {
     return view('components.dashboard');
   }
