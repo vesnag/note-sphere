@@ -22,6 +22,7 @@ class User extends Authenticatable {
     'name',
     'email',
     'password',
+    'profile_picture',
   ];
 
   /**
@@ -40,9 +41,9 @@ class User extends Authenticatable {
   public function canViewNote($noteId) {
     // Replace with your actual logic to check if the user can view the note.
     // For example, you might check if the user is the owner of the note or has been granted access.
-    //s$note = Note::find($noteId);
-    //return $note && $note->user_id === $this->id;
-    return true;
+    // s$note = Note::find($noteId);
+    // return $note && $note->user_id === $this->id;.
+    return TRUE;
   }
 
   /**

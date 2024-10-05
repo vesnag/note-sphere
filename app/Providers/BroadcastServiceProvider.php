@@ -25,7 +25,7 @@ class BroadcastServiceProvider extends ServiceProvider {
       // if ($user->canViewNote($noteId)) {.
               Log::info("User {$user->id} is authorized to view note {$noteId}");
 
-            return ['id' => $user->id, 'name' => $user->name];
+            return ['id' => $user->id, 'name' => $user->name, 'profile_picture' => $user->profile_picture];
       // }
         return FALSE;
     });

@@ -37,10 +37,10 @@
 
         <!-- Users Online Information -->
         <div class="w-1/3 pl-4">
-            <h2 class="text-2xl font-bold mb-4">Users Online</h2>
-            <ul id="users-list" class="list-disc pl-5">
-                <!-- User list will be populated here by JavaScript -->
-            </ul>
+            <div id="users-list-container" class="shadow rounded-lg p-4 border border-gray-300 dark:border-gray-700 dark:bg-gray-800">
+                <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100 mb-4">Currently Online</h2>
+                <ul id="users-list" class="space-y-2"></ul>
+            </div>
         </div>
     </div>
 </div>

@@ -15,6 +15,26 @@ use Illuminate\View\View;
 class ProfileController extends Controller {
 
   /**
+   * Update the user's profile picture.
+   */
+  public function updatePicture(Request $request) {
+    $request->validate([
+      'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
+
+    $user = $request->user();
+
+    if ($request->hasFile('profile_picture')) {
+      $file = $request->file('profile_picture');
+      $path = $file->store('profile_pictures', 'public');
+      $user->profile_picture = $path;
+      $user->save();
+    }
+
+    return Redirect::route('profile.edit')->with('status', 'profile-picture-updated');
+  }
+
+  /**
    * Display the user's profile form.
    */
   public function edit(Request $request): View {
