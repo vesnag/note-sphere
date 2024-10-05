@@ -1,10 +1,10 @@
 <?php
 
+// app/Models/Note.php.
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
  *
@@ -15,9 +15,9 @@ class Note extends Model {
   protected $fillable = ['title', 'content'];
 
   /**
-   * Get the users that own the note.
+   * The users that belong to the note.
    */
-  public function user(): BelongsTo {
+  public function users() {
     return $this->belongsToMany(User::class, 'note_user', 'note_id', 'user_id');
   }
 

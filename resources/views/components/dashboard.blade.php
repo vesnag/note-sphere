@@ -8,7 +8,7 @@
             <ul class="space-y-2">
                 @foreach($recentNotes as $note)
                     <li class="pb-2">
-                        <a href="{{ route('note.show', $note->id) }}" class="text-blue-600 dark:text-blue-400">{{ $note->title }}</a>
+                        <a href="{{ route('note.show.single', $note->id) }}" class="text-blue-600 dark:text-blue-400">{{ $note->title }}</a>
                     </li>
                 @endforeach
             </ul>

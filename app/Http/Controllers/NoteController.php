@@ -42,7 +42,7 @@ class NoteController extends Controller {
     $user = Auth::user();
     $user->notes()->attach($note->id);
 
-    return redirect()->route('note.show', $note->id);
+    return redirect()->route('note.show.single', $note->id);
   }
 
   /**
@@ -73,7 +73,7 @@ class NoteController extends Controller {
     // Broadcast the note update.
     broadcast(new NoteUpdated($note->id, $note->content))->toOthers();
 
-    return redirect()->route('note.show', $note->id);
+    return redirect()->route('note.show.single', $note->id);
   }
 
 }

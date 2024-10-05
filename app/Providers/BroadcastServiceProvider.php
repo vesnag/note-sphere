@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Note;
 use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\ServiceProvider;
@@ -21,13 +22,16 @@ class BroadcastServiceProvider extends ServiceProvider {
 
     // Define the authorization logic for the presence channel.
     Broadcast::channel('note-sphere-broadcasting.{noteId}', function ($user, $noteId) {
-        // Replace with logic that checks if the user is authorized to view this note.
-      // if ($user->canViewNote($noteId)) {.
-              Log::info("User {$user->id} is authorized to view note {$noteId}");
+        // Fetch the note.
+       $note = Note::find($noteId);
 
-            return ['id' => $user->id, 'name' => $user->name, 'profile_picture' => $user->profile_picture];
-      // }
-        return FALSE;
+      // Check if the user is associated with the note.
+      if ($note && $note->users->contains($user->id)) {
+          Log::info("User {$user->id} is authorized to view note {$noteId}");
+
+          return ['id' => $user->id, 'name' => $user->name, 'profile_picture' => $user->profile_picture];
+      }
+
     });
   }
 

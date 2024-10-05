@@ -1,5 +1,5 @@
 <!-- resources/views/components/note-editor.blade.php -->
-<div class="container mx-auto px-4 py-8 mt-16">
+<div class="container mx-auto px-4 py-8 mt-10">
     <h1 class="text-3xl font-bold mb-6">
         {{ $note ? 'Edit Note' : 'Create New Note' }}
     </h1>
@@ -35,6 +35,7 @@
             </form>
         </div>
 
+        @if(isset($note))
         <!-- Users Online Information -->
         <div class="w-1/3 pl-4">
             <div id="users-list-container" class="shadow rounded-lg p-4 border border-gray-300 dark:border-gray-700 dark:bg-gray-800">
@@ -42,5 +43,6 @@
                 <ul id="users-list" class="space-y-2"></ul>
             </div>
         </div>
+        @endif
     </div>
 </div>
