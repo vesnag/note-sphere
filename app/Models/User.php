@@ -58,4 +58,11 @@ class User extends Authenticatable {
     ];
   }
 
+  /**
+   * Get the notes for the user.
+   */
+  public function notes() {
+    return $this->belongsToMany(Note::class, 'note_user', 'user_id', 'note_id');
+  }
+
 }
