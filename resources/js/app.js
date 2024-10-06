@@ -6,6 +6,8 @@ window.Alpine = Alpine;
 Alpine.start();
 
 document.addEventListener('DOMContentLoaded', () => {
+  const DEFAULT_PROFILE_PICTURE = '/default-profile-picture.jpg';
+
   const themeToggleBtn = document.getElementById('theme-toggle');
   const lightIcon = document.getElementById('theme-toggle-light-icon');
   const darkIcon = document.getElementById('theme-toggle-dark-icon');
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const path = window.location.pathname;
-  const noteRegex = /^\/note\/(\d+)$/;
+  const noteRegex = /^\/notes\/(\d+)$/;
   const match = path.match(noteRegex);
   const noteId = match ? match[1] : null;
 
@@ -54,17 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function removeUserFromList(user) {
       const userItem = document.getElementById(`user-${user.user_id}`);
-      if (userItem) userItem.remove();
+      if (userItem) {
+        userItem.remove();
+      }
     }
 
     function createUserListItem(user) {
       const userInfo = user.user_info || user;
+      const profilePicture = userInfo.profile_picture || DEFAULT_PROFILE_PICTURE;
+
       return `
-        <li id="user-${userInfo.user_id}" class="flex items-center space-x-2 p-2">
-          <img src="${userInfo.profile_picture || '/default-profile-picture.jpg'}" alt="${userInfo.name}'s profile picture" class="w-8 h-8 rounded-full">
-          <span>${userInfo.name}</span>
-        </li>
-      `;
+      <li id="user-${userInfo.user_id}" class="flex items-center space-x-2 p-2">
+        <img src="${profilePicture}" alt="${userInfo.name}'s profile picture" class="w-8 h-8 rounded-full">
+        <span>${userInfo.name}</span>
+      </li>
+    `;
     }
   }
 });

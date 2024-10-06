@@ -9,9 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\View\View;
 
-/**
- * Controller for handling notes.
- */
 class NoteController extends Controller {
 
   /**

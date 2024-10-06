@@ -7,9 +7,6 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Queue\SerializesModels;
 
-/**
- * Event triggered when a note is updated.
- */
 class NoteUpdated implements ShouldBroadcastNow {
   use InteractsWithSockets, SerializesModels;
 

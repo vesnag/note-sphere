@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
 use Illuminate\View\View;
 
-/**
- * Controller for handling the dashboard.
- */
 class DashboardController extends Controller {
 
   /**
