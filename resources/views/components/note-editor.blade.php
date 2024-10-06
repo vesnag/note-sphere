@@ -3,6 +3,15 @@
         {{ $note ? 'Edit Note' : 'Create New Note' }}
     </h1>
 
+    <!-- Notification Container -->
+    <div id="notification-container" class="hidden bg-lightPink border border-royalPurple text-darkPurple px-4 py-3 rounded relative mb-6" role="alert">
+        <span class="block sm:inline" id="notification-message"></span>
+        <div class="mt-4">
+            <button id="accept-update" class="bg-lavenderPurple hover:bg-deepLavender text-white font-bold py-2 px-4 rounded mr-2">Accept</button>
+            <button id="skip-update" class="bg-darkPurple hover:bg-violet text-white font-bold py-2 px-4 rounded">Skip</button>
+        </div>
+    </div>
+
     <div class="flex">
         <!-- Form for Creating or Editing a Note -->
         <div class="w-2/3 pr-4">

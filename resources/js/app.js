@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       .joining(addUserToList)
       .leaving(removeUserFromList)
       .listen('NoteUpdated', (event) => {
-        document.getElementById('note-content').value = event.content;
+        showNotification(event.content);
       });
 
     function updateUsersList(users) {
@@ -71,6 +71,25 @@ document.addEventListener('DOMContentLoaded', () => {
         <span>${userInfo.name}</span>
       </li>
     `;
+    }
+
+    function showNotification(content) {
+      const notificationContainer = document.getElementById('notification-container');
+      const notificationMessage = document.getElementById('notification-message');
+      const acceptUpdateBtn = document.getElementById('accept-update');
+      const skipUpdateBtn = document.getElementById('skip-update');
+
+      notificationMessage.textContent = 'There is a new update for this note. Do you want to accept it?';
+      notificationContainer.classList.remove('hidden');
+
+      acceptUpdateBtn.onclick = () => {
+        document.getElementById('note-content').value = content;
+        notificationContainer.classList.add('hidden');
+      };
+
+      skipUpdateBtn.onclick = () => {
+        notificationContainer.classList.add('hidden');
+      };
     }
   }
 });
