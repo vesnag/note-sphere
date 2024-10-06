@@ -6,20 +6,38 @@ use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Support\Facades\Log;
+
+/**
+ * Event triggered when a note is updated.
+ */
 class NoteUpdated implements ShouldBroadcastNow {
   use InteractsWithSockets, SerializesModels;
 
+  /**
+   * Create a new event instance.
+   *
+   * @param int $noteId
+   * @param string $content
+   */
   public function __construct(
     public int $noteId,
     public string $content,
   ) {}
 
+  /**
+   * Get the channels the event should broadcast on.
+   *
+   * @return \Illuminate\Broadcasting\PresenceChannel
+   */
   public function broadcastOn(): PresenceChannel {
-    Log::info("Broadcasting NoteUpdated to channel: note-sphere-broadcasting.{$this->noteId}");
     return new PresenceChannel('note-sphere-broadcasting.' . $this->noteId);
   }
 
+  /**
+   * Get the data to broadcast.
+   *
+   * @return array
+   */
   public function broadcastWith(): array {
     return ['content' => $this->content];
   }

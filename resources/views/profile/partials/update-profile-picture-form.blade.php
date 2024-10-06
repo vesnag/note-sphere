@@ -1,10 +1,10 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="text-lg font-medium text-gray-900 dark:text-gray-200"">
             {{ __('Profile Picture') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             {{ __("Update your profile picture.") }}
         </p>
     </header>
@@ -15,7 +15,7 @@
 
         <div>
             <x-input-label for="profile_picture" :value="__('Profile Picture')" />
-            <input type="file" name="profile_picture" id="profile_picture" class="mt-1 block w-full">
+            <input type="file" name="profile_picture" id="profile_picture" class="mt-1 block w-full dark:bg-gray-700 dark:text-gray-200">
             <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
         </div>
 

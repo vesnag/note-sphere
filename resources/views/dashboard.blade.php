@@ -1,5 +1,3 @@
-<!-- resources/views/dashboard.blade.php -->
-
 @section('title', 'Dashboard')
 
 <x-app-layout>
@@ -14,7 +12,7 @@
                     </span>
                 </div>
             @endif
-            <x-dashboard :recentNotes="$recentNotes" :userCount="$userCount" title="User Dashboard" />
+            <x-dashboard :recentNotes="$recentNotes" title="User Dashboard" />
         </div>
     </div>
 </x-app-layout>

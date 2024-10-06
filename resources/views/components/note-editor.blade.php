@@ -1,6 +1,5 @@
-<!-- resources/views/components/note-editor.blade.php -->
 <div class="container mx-auto px-4 py-8 mt-10">
-    <h1 class="text-3xl font-bold mb-6">
+    <h1 class="text-3xl font-bold mb-6 text-gray-900 dark:text-gray-100">
         {{ $note ? 'Edit Note' : 'Create New Note' }}
     </h1>
 
@@ -16,19 +15,19 @@
                 <!-- Note Title Input -->
                 <div class="mb-6">
                     <label for="title" class="block text-lg font-medium text-gray-700 dark:text-gray-300">Note Title</label>
-                    <input type="text" name="title" id="title" class="mt-1 block w-full px-3 py-2 border rounded-lg text-gray-900 dark:text-gray-900"
+                    <input type="text" name="title" id="title" class="mt-1 block w-full px-3 py-2 border rounded-lg text-gray-900 dark:text-gray-100 dark:bg-gray-700 dark:border-gray-600"
                            value="{{ $note ? $note->title : old('title') }}" required>
                 </div>
 
                 <!-- Note Content Textarea -->
                 <div class="mb-6">
                     <label for="content" class="block text-lg font-medium text-gray-700 dark:text-gray-300">Content</label>
-                    <textarea name="content" id="note-content" rows="10" class="mt-1 block w-full px-3 py-2 border rounded-lg text-gray-900 dark:text-gray-900" required>{{ $note ? $note->content : old('content') }}</textarea>
+                    <textarea name="content" id="note-content" rows="10" class="mt-1 block w-full px-3 py-2 border rounded-lg text-gray-900 dark:text-gray-100 dark:bg-gray-700 dark:border-gray-600" required>{{ $note ? $note->content : old('content') }}</textarea>
                 </div>
 
                 <!-- Submit Button -->
                 <div class="flex justify-end">
-                    <button type="submit" class="bg-lavenderPurple hover:bg-deepLavender text-white px-4 py-2 rounded-lg">
+                    <button type="submit" class="bg-[#9151b0] hover:bg-[#7260c3] text-white px-4 py-2 rounded-lg">
                         {{ $note ? 'Update Note' : 'Create Note' }}
                     </button>
                 </div>

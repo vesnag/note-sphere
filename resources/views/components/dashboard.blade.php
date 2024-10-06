@@ -1,5 +1,3 @@
-<!-- resources/views/components/dashboard.blade.php -->
-
 <div class="container mx-auto p-4">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         <!-- Recent Notes -->
@@ -8,7 +6,7 @@
             <ul class="space-y-2">
                 @foreach($recentNotes as $note)
                     <li class="pb-2">
-                        <a href="{{ route('note.show.single', $note->id) }}" class="text-blue-600 dark:text-blue-400">{{ $note->title }}</a>
+                        <a href="{{ route('note.show.single', $note->id) }}" class="text-[#9151b0] dark:text-[#9151b0]">{{ $note->title }}</a>
                     </li>
                 @endforeach
             </ul>

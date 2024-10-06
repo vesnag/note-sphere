@@ -8,7 +8,7 @@ class Dashboard extends Component {
   public $recentNotes;
   public $title;
 
-  public function __construct($recentNotes, $userCount, $title) {
+  public function __construct($recentNotes, $title) {
     $this->recentNotes = $recentNotes;
     $this->title = $title;
   }

@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller {
 
     $request->session()->regenerate();
 
-    return redirect()->intended(route('note.show.store', absolute: FALSE));
+    return redirect()->intended(route('note.store', absolute: FALSE));
   }
 
   /**
