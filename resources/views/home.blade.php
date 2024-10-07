@@ -26,7 +26,7 @@
                 </div>
                 <!-- Welcome Text -->
                 <h1 class="text-5xl font-bold text-darkPurple mb-4 sm:text-4xl md:text-5xl">Welcome to NoteSphere</h1>
-                <p class="text-xl text-gray-700 dark:text-gray-300 mb-8 sm:text-lg md:text-xl">Your personal note-taking application.</p>
+                <p class="text-xl text-gray-700 dark:text-gray-300 mb-8 sm:text-lg md:text-xl">Take notes with your team in real-time.</p>
 
                 <!-- Action Buttons -->
                 <div class="flex justify-center space-x-4">
