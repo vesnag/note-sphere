@@ -25,7 +25,7 @@
                 <div class="mb-6">
                     <label for="title" class="block text-lg font-medium text-gray-700 dark:text-gray-300">Note Title</label>
                     <input type="text" name="title" id="title" class="mt-1 block w-full px-3 py-2 border rounded-lg text-gray-900 dark:text-gray-100 dark:bg-gray-700 dark:border-gray-600"
-                           value="{{ $note ? $note->title : old('title') }}" required>
+                           value="{{ $note ? $note->title : old('title') }}" required readonly>
                 </div>
 
                 <!-- Note Content Textarea -->
