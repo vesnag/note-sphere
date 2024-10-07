@@ -22,13 +22,13 @@ class BroadcastServiceProvider extends ServiceProvider {
     require base_path('routes/channels.php');
 
     Broadcast::channel('note.{noteId}', function ($user, $noteId) {
-        $note = Note::find($noteId);
+      $note = Note::find($noteId);
 
-      if ($note === NULL) {
+      if (!$note instanceof Note) {
             return FALSE;
       }
 
-        return $note->users->contains($user);
+      return $note->users->contains($user);
     });
   }
 
