@@ -7,6 +7,9 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Queue\SerializesModels;
 
+/**
+ *
+ */
 class NoteUpdated implements ShouldBroadcastNow {
   use InteractsWithSockets, SerializesModels;
 
@@ -33,7 +36,7 @@ class NoteUpdated implements ShouldBroadcastNow {
   /**
    * Get the data to broadcast.
    *
-   * @return array
+   * @return array<string, string>
    */
   public function broadcastWith(): array {
     return ['content' => $this->content];

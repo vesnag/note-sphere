@@ -1,9 +1,5 @@
 <?php
 
-/**
- * @file
- */
-
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;

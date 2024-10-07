@@ -10,12 +10,14 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 /**
- *
+ * Controller for handling authenticated sessions.
  */
 class AuthenticatedSessionController extends Controller {
 
   /**
    * Display the login view.
+   *
+   * @return \Illuminate\View\View
    */
   public function create(): View {
     return view('auth.login');
@@ -23,17 +25,25 @@ class AuthenticatedSessionController extends Controller {
 
   /**
    * Handle an incoming authentication request.
+   *
+   * @param \App\Http\Requests\Auth\LoginRequest $request
+   *
+   * @return \Illuminate\Http\RedirectResponse
    */
   public function store(LoginRequest $request): RedirectResponse {
     $request->authenticate();
 
     $request->session()->regenerate();
 
-    return redirect()->intended(route('note.store', absolute: FALSE));
+    return redirect()->intended(route('dashboard'));
   }
 
   /**
    * Destroy an authenticated session.
+   *
+   * @param \Illuminate\Http\Request $request
+   *
+   * @return \Illuminate\Http\RedirectResponse
    */
   public function destroy(Request $request): RedirectResponse {
     Auth::guard('web')->logout();

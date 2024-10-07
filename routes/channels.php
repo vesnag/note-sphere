@@ -4,8 +4,9 @@ use App\Models\Note;
 use App\Services\NoteAccessService;
 use Illuminate\Support\Facades\Broadcast;
 
-define('DEFAULT_PROFILE_PICTURE', asset('default-profile-picture.jpg'));
-
+if (!defined('DEFAULT_PROFILE_PICTURE')) {
+  define('DEFAULT_PROFILE_PICTURE', asset('default-profile-picture.jpg'));
+}
 Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
     return (int) $user->id === (int) $id;
 });
